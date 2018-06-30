@@ -16,3 +16,25 @@
 // });
 
 Route::get('/', 'PagesController@root')->name('root');
+
+//Auth::routes(); 此处是 Laravel 的用户认证路由，以上等同于
+// Authentication Routes...
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes...
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
+
+// Password Reset Routes...
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+//为了更加直观，我们将在 web.php 中使用以上替换 Auth::routes();。
+
+//已经有自己的主页了，不需要再次设置主页，直接删除即可
+//Route::get('/home', 'HomeController@index')->name('home');
+
