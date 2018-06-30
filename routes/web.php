@@ -38,3 +38,8 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 //已经有自己的主页了，不需要再次设置主页，直接删除即可
 //Route::get('/home', 'HomeController@index')->name('home');
 
+//Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
+//下面等同于上面
+Route::get('/users/{user}', 'UsersController@show')->name('users.show');
+Route::get('/users/{user}/edit', 'UsersController@edit')->name('users.edit');
+Route::patch('/users/{user}', 'UsersController@update')->name('users.update');
