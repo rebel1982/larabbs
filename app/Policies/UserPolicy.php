@@ -18,7 +18,18 @@ class UserPolicy
     {
         //
     }
-
+	/**
+     * Determine whether the user can view the =users.
+     *
+     * @param  \App\Models\User  $currentUser
+     * @param  user
+     * @return mixed
+     */
+    public function view(User $currentUser, User $user)
+    {
+        //
+		return $currentUser->id === $user->id;
+    }
      public function update(User $currentUser, User $user)
     {
         return $currentUser->id === $user->id;

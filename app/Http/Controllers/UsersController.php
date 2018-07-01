@@ -15,13 +15,14 @@ class UsersController extends Controller
     }
     //个人展示中心
     public function show(User $user)
-    {
+    {   //查看自己信息
+        $this->authorize('view', $user);
     	return view('users.show',compact('user'));
     }
     //个人编辑中心
     public function edit(User $user)
     {   
-        //权限
+        //编辑自己信息
         $this->authorize('update', $user);
     	
         return view('users.edit',compact('user'));
@@ -29,7 +30,7 @@ class UsersController extends Controller
     //更新个人资料
     public function update(UserRequest $request, ImageUploadHandler $uploader, User $user)
     {
-        //权限
+        //更新自己信息
         $this->authorize('update', $user);
 
         $data = $request->all();
