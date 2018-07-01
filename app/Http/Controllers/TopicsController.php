@@ -16,7 +16,9 @@ class TopicsController extends Controller
 
 	public function index()
 	{
-		$topics = Topic::paginate();
+		//$topics = Topic::paginate(30);
+		// Eloquent 提供的 预加载功能 
+		$topics = Topic::with('user', 'category')->paginate(15);
 		return view('topics.index', compact('topics'));
 	}
 
