@@ -12,7 +12,7 @@
 	
 	<!-- Styles -->
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+	@yield('styles')
 </head>
 <body>
 	<div id="app" class="{{ route_class() }}-page">
@@ -29,5 +29,6 @@
 	</div>
 	<!-- Scripts -->
 	<script src="{{ asset('js/app.js') }}"></script>
+	@yield('scripts')
 </body>
 </html>
