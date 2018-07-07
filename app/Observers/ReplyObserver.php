@@ -25,4 +25,9 @@ class ReplyObserver
     {
         $reply->topic->increment('reply_count', 1);
     }
+    //删除成功后reply_count字段-1
+    public function deleted(Reply $reply)
+    {
+        $reply->topic->decrement('reply_count', 1);
+    }
 }
