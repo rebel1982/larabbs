@@ -12,6 +12,7 @@ class ReplyObserver
     //过滤数据
     public function creating(Reply $reply)
     {
+        //config/purifier.php (过滤)  user_topic_body
         $reply->content = clean($reply->content, 'user_topic_body');
     }
 
