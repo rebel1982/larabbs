@@ -40,4 +40,12 @@ class   User extends Authenticatable
     {
         return $this->id == $model->user_id;
     }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * 一个用户拥有多个帖子
+     */
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
 }

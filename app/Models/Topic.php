@@ -48,4 +48,12 @@ class Topic extends Model
         return route('topics.show',array_merge([$this->id,$this->slug],$params));
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * 一篇帖子下有多条回复
+     */
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
 }
