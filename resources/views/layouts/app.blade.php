@@ -9,7 +9,8 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="description" content="@yield('description', 'LaraBBS 爱好者社区')" />
 
-	<title>@yield('title', 'LaraBBS') - Laravel 进阶教程</title>
+	{{--<title>@yield('title', 'LaraBBS') - Laravel 进阶教程</title>--}}
+	<title>@yield('title', 'LaraBBS') - {{ setting('site_name', 'Laravel 进阶教程') }}</title>
 	
 	<!-- Styles -->
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
