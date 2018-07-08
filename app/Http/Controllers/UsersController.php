@@ -16,7 +16,7 @@ class UsersController extends Controller
     //个人展示中心
     public function show(User $user)
     {   //查看自己信息
-        $this->authorize('view', $user);
+//        $this->authorize('view', $user);
     	return view('users.show',compact('user'));
     }
     //个人编辑中心
