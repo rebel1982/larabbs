@@ -10,6 +10,7 @@ use App\Models\Category;
 use Auth;
 use App\Handlers\ImageUploadHandler;
 use App\Models\User;
+use App\Models\Link;
 
 class TopicsController extends Controller
 {
@@ -18,15 +19,18 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index(Request $request , Topic $topic ,User $user)
+	public function index(Request $request , Topic $topic ,User $user, Link $link)
 	{
 		//$topics = Topic::paginate(30);
 		// Eloquent 提供的 预加载功能 
 		// $topics = Topic::with('user', 'category')->paginate(15);
 		$topics = $topic->withOrder($request->order)->paginate(20);
+		//活跃用户
         $active_users = $user->getActiveUsers();
+        //资源推荐
+        $links = $link->getAllCached();
 //        dd($active_users);
-		return view('topics.index', compact('topics','active_users'));
+		return view('topics.index', compact('topics','active_users','links'));
 	}
 
     public function show(Request $request,Topic $topic)
