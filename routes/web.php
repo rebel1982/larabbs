@@ -15,8 +15,8 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'PagesController@root')->name('root');
-
+//Route::get('/', 'PagesController@root')->name('root');
+Route::get('/', 'TopicsController@index')->name('root');
 //Auth::routes(); 此处是 Laravel 的用户认证路由，以上等同于
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
